@@ -1,0 +1,302 @@
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #1d2636;
+  --muted: #6b7482;
+  --primary: #4f46e5;
+  --income: #16a34a;
+  --expense: #dc2626;
+  --border: #e5e7eb;
+  --shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+body.dark {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --primary: #818cf8;
+  --income: #22c55e;
+  --expense: #f87171;
+  --border: #334155;
+  --shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.app-header {
+  max-width: 1300px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.app-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px 1fr 380px;
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+h2,
+h3 {
+  margin-top: 0;
+}
+
+form {
+  display: grid;
+  gap: 8px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input,
+select,
+textarea,
+button {
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  padding: 10px;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--card);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.btn-primary,
+.btn-secondary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: transparent;
+}
+
+.error-message {
+  margin: 2px 0 0;
+  color: var(--expense);
+  min-height: 1rem;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.toolbar input {
+  min-width: 200px;
+}
+
+.filters {
+  margin: 12px 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.transaction-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 65vh;
+  overflow: auto;
+}
+
+.transaction-item {
+  border: 1px solid var(--border);
+  border-left: 6px solid transparent;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: grid;
+  gap: 6px;
+  animation: fadeIn 220ms ease;
+}
+
+.transaction-item.income {
+  border-left-color: var(--income);
+}
+
+.transaction-item.expense {
+  border-left-color: var(--expense);
+}
+
+.transaction-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.amount.income {
+  color: var(--income);
+}
+
+.amount.expense {
+  color: var(--expense);
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.item-actions button {
+  padding: 6px 10px;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.summary {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 0;
+}
+
+.summary h3 {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.summary p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.summary.income p {
+  color: var(--income);
+}
+
+.summary.expense p {
+  color: var(--expense);
+}
+
+.budget-section {
+  margin-top: 14px;
+}
+
+.budget-progress-wrap {
+  margin-top: 8px;
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: #dbe2ea;
+  overflow: hidden;
+}
+
+.budget-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: var(--income);
+  transition: width 260ms ease;
+}
+
+.budget-status {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.budget-warning .budget-progress-bar {
+  background: var(--expense);
+}
+
+.budget-warning .budget-status {
+  color: var(--expense);
+  font-weight: 700;
+}
+
+.chart-wrap {
+  margin-top: 14px;
+}
+
+canvas {
+  max-height: 260px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1180px) {
+  .app-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .transaction-list {
+    max-height: 45vh;
+  }
+}
+
+@media (max-width: 520px) {
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+}
